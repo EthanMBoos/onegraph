@@ -100,6 +100,10 @@ planned path and the controls that follow it. The robot applies the first
 control, advances one tick, and solves again, which is the standard model
 predictive control loop. `future_factors` builds this half.
 
+The post refers to this half as planning. This repo refers to it as control,
+because it outputs a control at every tick and nothing in it chooses a route.
+The word plan is kept for the path that the controller solves for.
+
 ## STAG: the two halves anchored at the present
 
 The two halves have one variable in common, the state at the current tick.

@@ -8,7 +8,7 @@ Both halves share the state at the current tick, which is the only place they to
 
 A cost is written as a Gaussian factor so that it can sit in the same graph as a measurement:
 a cost of w * e^2 is a factor on e with sigma 1 / sqrt(w). `cost_scale` multiplies every cost
-weight. It does not change what a planner alone would do, but it sets how much the costs weigh
+weight. It does not change what a controller alone would do, but it sets how much the costs weigh
 against the measurements once both are in one graph.
 """
 

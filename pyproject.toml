@@ -1,7 +1,7 @@
 [project]
 name = "onegraph"
 version = "0.1.0"
-description = "One factor graph for estimation and planning, compared with the separate design"
+description = "One factor graph for estimation and control, compared with the separate design"
 readme = "README.md"
 authors = [
     { name = "Ethan Boos", email = "moosboos1@gmail.com" }

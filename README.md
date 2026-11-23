@@ -1,8 +1,8 @@
 # onegraph
 
-onegraph puts a robot's state estimator and its planner in one factor graph and
-compares that with the usual design, where the two are separate. It is a riff
-on Frank Dellaert's post
+onegraph puts a robot's state estimator and its controller in one factor graph
+and compares that with the usual design, where the two are separate. It is a
+riff on Frank Dellaert's post
 [Factor Graphs and "World Models"](https://gtsam.org/2026/04/21/factor-graphs-and-world-models.html),
 which proposes the joint graph and calls it STAG. The past few seconds of the
 graph are a smoother and the next few are a model predictive controller, and
@@ -55,8 +55,8 @@ current state, the future half sums to a quadratic cost-to-go that is lowest at
 the goal, so it acts on the estimate as a position fix at the goal would. The
 solver cannot tell a measurement from a wish.
 
-**Why the cost scale matters.** A planner alone does not care about the scale of
-its cost, since doubling every weight leaves the best plan unchanged. The
+**Why the cost scale matters.** A controller alone does not care about the scale
+of its cost, since doubling every weight leaves the best plan unchanged. The
 separate arm's row is the same at every scale for that reason. In the joint
 graph the scale sets how much the costs weigh against the measurements, so a
 number that used to be arbitrary now decides how wrong the estimate is.

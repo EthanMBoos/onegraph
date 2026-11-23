@@ -23,7 +23,7 @@ def beacon_range(position_m: np.ndarray, rng: np.random.Generator) -> float:
 def main() -> None:
     rng = np.random.default_rng(0)
     dt_s = 0.01
-    # `cmd_acc` is a thrust vector divided by mass, in the world frame with Z up, so a planner's
+    # `cmd_acc` is a thrust vector divided by mass, in the world frame with Z up, so a controller's
     # acceleration needs gravity added. RotorPy's own attitude loop turns it into rotor speeds.
     vehicle = Multirotor(quad_params, control_abstraction="cmd_acc")
     imu = Imu()

@@ -1,7 +1,7 @@
 """The designs being compared. Each takes the window and returns (estimate, control).
 
-`separate` is the usual design: the smoother is solved alone, and the planner starts from its
-estimate as if that estimate were exact. `joint` puts both halves in one graph and solves them
+`separate` is the usual design: the smoother is solved alone, and the controller starts from
+its estimate as if that estimate were exact. `joint` puts both halves in one graph and solves them
 together, so the cost factors can move the estimate.
 """
 
