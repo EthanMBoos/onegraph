@@ -11,6 +11,7 @@ the two halves share the state at the current tick. The graph is built with
 
 So far the repo flies a planar point mass to a goal. The drone is the work
 ahead; see [docs/TODO.md](docs/TODO.md).
+[docs/BACKGROUND.md](docs/BACKGROUND.md) explains the concepts.
 
 ## Try it
 
