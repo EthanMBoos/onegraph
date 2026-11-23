@@ -2,8 +2,8 @@
 
 onegraph puts a robot's state estimator and its controller in one factor graph
 and compares that with the usual design, where the two are separate. It is a
-riff on Frank Dellaert's post
-[Factor Graphs and "World Models"](https://gtsam.org/2026/04/21/factor-graphs-and-world-models.html),
+riff on a
+[post by Frank Dellaert](https://gtsam.org/2026/04/21/factor-graphs-and-world-models.html),
 which proposes the joint graph and calls it STAG. The past few seconds of the
 graph are a smoother and the next few are a model predictive controller, and
 the two halves share the state at the current tick. The graph is built with

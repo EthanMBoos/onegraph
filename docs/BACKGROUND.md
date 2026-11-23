@@ -1,7 +1,8 @@
 # Background
 
-onegraph follows Frank Dellaert's post
-[Factor Graphs and "World Models"](https://gtsam.org/2026/04/21/factor-graphs-and-world-models.html).
+onegraph follows a
+[post by Frank Dellaert](https://gtsam.org/2026/04/21/factor-graphs-and-world-models.html)
+on putting estimation and control in one factor graph.
 The post assumes the reader already knows factor graphs, smoothing, and model
 predictive control. The sections below build each of those up in the order the
 post uses them, and name the code in this repo that implements each one. The
@@ -43,25 +44,18 @@ Here `x_i` is the small subset of variables that factor `i` is attached to.
 Each factor involves one or two variables out of possibly hundreds, and
 solvers such as GTSAM are fast because they exploit that sparsity.
 
-## Energy
+## Least squares
 
-The post's first claim is that a factor graph is an energy-based model. The
-negative log of the probability above turns the product into a sum, and the
-post refers to that sum as the energy:
+The negative log of the probability above turns the product into a sum, with
+one term per factor:
 
 $$E(x) = -\log p(x \mid z) = \sum_i E_i(x_i) + \text{constant}$$
 
-A probable guess has a low energy, so finding the most probable states is the
-same as minimizing the energy. When the noise is Gaussian, each term is a
-squared error divided by a variance (e.g., `(z - h(x))² / σ²` for a sensor with
+A probable guess has a low sum, so finding the most probable states is the
+same as minimizing it. When the noise is Gaussian, each term is a squared
+error divided by a variance (e.g., `(z - h(x))² / σ²` for a sensor with
 standard deviation `σ`), so the minimization is a least-squares problem, and a
 factor with a small `σ` pulls harder on the solution than one with a large `σ`.
-
-An energy-based model, in the sense of LeCun's work that the post cites,
-likewise defines an energy over its variables and finds an answer by minimizing
-it. The difference is in where the energy comes from: in a factor graph each
-term is written by hand from physics and sensor models, whereas in a learned
-world model the terms are neural networks.
 
 ## The past half: a fixed-lag smoother
 
@@ -138,9 +132,9 @@ questions for any robot and does not answer them: what the state is and whether
 it can be learned, whether the dynamics model is analytic, learned, or a
 hybrid, how each sensor connects to the state, and what the objectives for the
 future are. It also doubts parts of its own structure, asking whether the graph
-should be probabilistic at all, whether a factor could be a neural network that
-outputs an energy, and whether a sampling method (e.g., MPPI) could replace the
-least-squares solve.
+should be probabilistic at all, whether a factor could be a neural network,
+and whether a sampling method (e.g., MPPI) could replace the least-squares
+solve.
 
 One question is missing from that list, and it is the one the two readings
 above turn on: which way information should flow through the current state.
